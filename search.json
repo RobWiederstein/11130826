@@ -11,7 +11,14 @@
     "href": "index.html",
     "title": "11130826",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n1 + 1\n\n[1] 2"
+    "text": "Recently, I went to push a large website to GitHub pages as an interim step to finalizing it. Deploying websites is more time-consuming than I would like so only a portion of the website was deployed. The site relies on some java script libraries. I’d run into GitHub’s large file size error before but managed to push through it. This time, however, proved to be trickier. This time the files were part of a larger quarto project. This post describes the interaction between quarto, git, gitHub, and large files."
+  },
+  {
+    "objectID": "index.html#quarto",
+    "href": "index.html#quarto",
+    "title": "11130826",
+    "section": "Quarto",
+    "text": "Quarto\nThe quarto documentation is always a helpful place to start. They describe how to deploy a website using three methods. The first method was the only one that I’d ever tried and it worked great. With that option, you have the quarto website publish to a /docs folder and then finish setting it up in the settings portion of GitHub. For a large site, this seemed really cumbersome a different option was appealing. The second options is referred to as the “Publish Command”. The site is deployed on the gh-pages branch. The three steps are (1) set the gh-pages as the source branch, (2) add output to the .gitignore file, (3) publish the site. (More on this below.)"
   },
   {
     "objectID": "index.html#helpful-links",
@@ -32,7 +39,7 @@
     "href": "index.html#large-files",
     "title": "11130826",
     "section": "Large Files",
-    "text": "Large Files\n\ndm &lt;- matrix(rnorm(1.5e7), ncol = 1e3)\ndf &lt;- data.frame(dm)\nsaveRDS(df, \"./large_file.rds\")\n\n\nfile.info(\"./large_file.rds\")$size \n\n[1] 115183361\n\n\n\ndf &lt;- readRDS(\"./large_file.rds\")\ndf[1:5, 1:5]\n\n          X1          X2         X3         X4         X5\n1  0.3006866 -0.08150836  0.8222746 -0.3819532 -1.6786906\n2 -0.4393029 -1.69508185 -0.8215622  0.4009155  0.3683968\n3 -0.5581733 -0.50018991  1.7344811 -0.3601478  1.4329303\n4 -0.5005250 -0.27217093 -0.6165987  0.6732467 -0.1304874\n5 -0.3908429 -0.16439817 -0.8144950 -1.4786616  0.6599968\n\n\n\nknitr::include_graphics(\"./error_large_file.png\")"
+    "text": "Large Files\n\ndm &lt;- matrix(rnorm(1.5e7), ncol = 1e3)\ndf &lt;- data.frame(dm)\nsaveRDS(df, \"./large_file.rds\")\n\n\nfile.info(\"./large_file.rds\")$size \n\n[1] 115184376\n\n\n\ndf &lt;- readRDS(\"./large_file.rds\")\ndf[1:5, 1:5]\n\n          X1          X2         X3         X4         X5\n1  1.0146349  0.02050148 -0.2439374 -0.4453175  0.6263601\n2  0.6509002  0.64956107  1.4690524 -0.2479143 -0.5379362\n3 -0.2410475 -0.17699235 -0.5068395 -0.2404564  0.3720127\n4 -0.2877826 -1.50633096  0.9485898  2.1306371  0.2927445\n5  0.4139583  1.33497065  1.1652821 -0.1298111 -1.3875168\n\n\n\nknitr::include_graphics(\"./error_large_file.png\")"
   },
   {
     "objectID": "index.html#install-lfs",
