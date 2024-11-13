@@ -4,6 +4,6 @@ title: "About"
 
 About this site
 
-```{r add-numbers}
+```{r add-numbers, echo=FALSE}
 1 + 1
 ```

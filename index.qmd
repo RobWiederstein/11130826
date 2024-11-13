@@ -4,6 +4,7 @@ title: "11130826"
 
 Recently, I went to push a large website to GitHub pages as an interim step to finalizing it.  Deploying websites is more time-consuming than I would like so only a portion of the website was deployed.  The site relies on some java script libraries.  I'd run into GitHub's large file size error before but managed to push through it.  This time, however, proved to be trickier.  This time the files were part of a larger quarto project.  This post describes the interaction between quarto, git, gitHub, and large files.
 
+
 ## Quarto
 
 The quarto documentation is always a helpful place to start. They describe how to deploy a website using three methods.  The first method was the only one that I'd ever tried and it worked great.  With that option, you have the quarto website publish to a `/docs` folder and then finish setting it up in the settings portion of GitHub.  For a large site, this seemed really cumbersome a different option was appealing.  The second options is referred to as the "Publish Command". The site is deployed on the `gh-pages` branch.  The three steps are (1) set the `gh-pages` as the source branch, (2) add output to the .gitignore file, (3) publish the site. (More on this below.)
@@ -62,8 +63,10 @@ df <- readRDS("./large_file.rds")
 df[1:5, 1:5]
 ```
 
+Upon pushing the file to GitHub, the effort yields the following error message:
 
-```{r}
+
+```{r, echo=FALSE}
 knitr::include_graphics("./img/error_large_file.png")
 ```
 
