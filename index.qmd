@@ -89,7 +89,7 @@ git add .gitattributes
 
 So you'll keep getting errors unless you remove the files from the cache. See SO question:  [Git error, need to remove large file](https://stackoverflow.com/questions/33360043/git-error-need-to-remove-large-file)
 
-```
+```{bash, eval=FALSE}
 git rm --cached giant_file
 git commit --amend -CHEAD
 
@@ -98,6 +98,7 @@ git commit --amend -CHEAD
 git filter-branch -f --tree-filter 'rm -f /path/to/file' HEAD --all
 
 ```
+
 ```{r}
 
 ```
