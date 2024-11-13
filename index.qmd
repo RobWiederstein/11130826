@@ -50,14 +50,14 @@ The key challenge was to add a file that exceeded GitHub's large file cap of 100
 
 ### Create Large File
 
-```{r}
+```{r, cache=TRUE}
 dm <- matrix(rnorm(1.5e7), ncol = 1e3)
 df <- data.frame(dm)
 saveRDS(df, "./large_file.rds")
 ```
 
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, cache=TRUE}
 df <- readRDS("./large_file.rds")
 df[1:5, 1:5]
 ```
@@ -104,6 +104,8 @@ Add the .gitattributes file with
 ```{bash, eval=FALSE}
 git add .gitattributes
 ```
+
+
 
 ## Caching 
 
