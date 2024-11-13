@@ -18,7 +18,7 @@
     "href": "index.html#quarto",
     "title": "11130826",
     "section": "Quarto",
-    "text": "Quarto\nThe quarto documentation is always a helpful place to start. They describe how to deploy a website using three methods. The first method was the only one that I’d ever tried and it worked great. With that option, you have the quarto website publish to a /docs folder and then finish setting it up in the settings portion of GitHub. For a large site, this seemed really cumbersome a different option was appealing. The second options is referred to as the “Publish Command”. The site is deployed on the gh-pages branch. The three steps are (1) set the gh-pages as the source branch, (2) add output to the .gitignore file, (3) publish the site. (More on this below.)"
+    "text": "Quarto\nThe quarto documentation is always a helpful place to start. They describe how to deploy a website using three methods. The first method was the only one that I’d ever tried and it worked great. With that option, you have the quarto website publish to a /docs folder and then finish setting it up in the settings portion of GitHub. For a large site, this seemed really cumbersome a different option was appealing. The second options is referred to as the “Publish Command”. The site is deployed on the gh-pages branch. The three steps are (1) set the gh-pages as the source branch, (2) add output to the .gitignore file, (3) publish the site. (More on this below.)\n\ngh-pages branch\nUse the following commands to set up the gh-pages branch, but only if you’ve not already done it in the settings of the remote GitHub settings page.\n\ngit checkout --orphan gh-pages\ngit reset --hard # make sure all changes are committed before running this!\ngit commit --allow-empty -m \"Initialising gh-pages branch\"\ngit push origin gh-pages\n\n\n\nAdd output to .gitignore\n\n/.quarto/\n/_site/\n_freeze/ # I also added the _freeze folder\n\nIf you’ve indavertently added the _site folder to the repository, you can remove it with the following command. _site is the default output directory in quarto.\n\ngit rm -r _site"
   },
   {
     "objectID": "index.html#helpful-links",
@@ -32,14 +32,14 @@
     "href": "index.html#gh-pages-setup",
     "title": "11130826",
     "section": "gh-pages Setup",
-    "text": "gh-pages Setup\n\ngit checkout --orphan gh-pages\ngit reset --hard # make sure all changes are committed before running this!\ngit commit --allow-empty -m \"Initialising gh-pages branch\"\ngit push origin gh-pages"
+    "text": "gh-pages Setup"
   },
   {
     "objectID": "index.html#large-files",
     "href": "index.html#large-files",
     "title": "11130826",
     "section": "Large Files",
-    "text": "Large Files\n\ndm &lt;- matrix(rnorm(1.5e7), ncol = 1e3)\ndf &lt;- data.frame(dm)\nsaveRDS(df, \"./large_file.rds\")\n\n\nfile.info(\"./large_file.rds\")$size \n\n[1] 115184376\n\n\n\ndf &lt;- readRDS(\"./large_file.rds\")\ndf[1:5, 1:5]\n\n          X1          X2         X3         X4         X5\n1  1.0146349  0.02050148 -0.2439374 -0.4453175  0.6263601\n2  0.6509002  0.64956107  1.4690524 -0.2479143 -0.5379362\n3 -0.2410475 -0.17699235 -0.5068395 -0.2404564  0.3720127\n4 -0.2877826 -1.50633096  0.9485898  2.1306371  0.2927445\n5  0.4139583  1.33497065  1.1652821 -0.1298111 -1.3875168\n\n\n\nknitr::include_graphics(\"./error_large_file.png\")"
+    "text": "Large Files\n\ndm &lt;- matrix(rnorm(1.5e7), ncol = 1e3)\ndf &lt;- data.frame(dm)\nsaveRDS(df, \"./large_file.rds\")\n\n\nfile.info(\"./large_file.rds\")$size \n\n[1] 115183719\n\n\n\ndf &lt;- readRDS(\"./large_file.rds\")\ndf[1:5, 1:5]\n\n          X1          X2          X3         X4          X5\n1  0.4083431  0.07777729  0.92423052  0.7948746 -0.03773728\n2  0.3869934 -0.25004690  0.08860456  0.3931170 -1.03043224\n3  1.8689547  0.05479597 -0.28243301 -1.2554677 -1.77354544\n4 -1.2419750 -1.10902225  0.07764901 -0.3275211  0.70127439\n5 -1.6701076  1.50371222 -0.53877402  0.8203475  1.54399150\n\n\n\nknitr::include_graphics(\"./error_large_file.png\")"
   },
   {
     "objectID": "index.html#install-lfs",
