@@ -52,6 +52,7 @@ The key challenge was to add a file that exceeded GitHub's large file cap of 100
 ### Create Large File
 
 ```{r, cache=TRUE}
+set.seed(1)
 dm <- matrix(rnorm(1.5e7), ncol = 1e3)
 df <- data.frame(dm)
 saveRDS(df, "./large_file.rds")
