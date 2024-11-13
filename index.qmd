@@ -1,0 +1,87 @@
+---
+title: "11130826"
+---
+
+This is a Quarto website.
+
+To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+
+```{r}
+1 + 1
+```
+
+## Helpful Links
+
+- [Publishing Github Pages](https://quarto.org/docs/publishing/github-pages.html#publish-command)
+
+- [git still shows files as modified after adding to .gitignore](https://stackoverflow.com/questions/9750606/git-still-shows-files-as-modified-after-adding-to-gitignore)
+
+- [_freeze](https://quarto.org/docs/projects/code-execution.html#freeze) Note that freeze controls whether execution occurs during global project renders.
+
+## `gh-pages` Setup
+
+```{bash, eval = FALSE}
+git checkout --orphan gh-pages
+git reset --hard # make sure all changes are committed before running this!
+git commit --allow-empty -m "Initialising gh-pages branch"
+git push origin gh-pages
+```
+
+## Large Files
+
+```{r}
+dm <- matrix(rnorm(1.5e7), ncol = 1e3)
+df <- data.frame(dm)
+saveRDS(df, "./large_file.rds")
+```
+
+```{r}
+file.info("./large_file.rds")$size 
+```
+
+
+```{r}
+df <- readRDS("./large_file.rds")
+df[1:5, 1:5]
+```
+
+
+```{r}
+knitr::include_graphics("./error_large_file.png")
+```
+
+
+## Install LFS
+
+```{r}
+knitr::include_graphics("./install_lfs.png")
+```
+
+```{bash, eval=FALSE}
+git lfs track "large_file.rds"
+```
+
+
+```{r}
+knitr::include_graphics("./track_lfs_file.png")
+```
+
+Show new .gitattributes file
+
+```{r}
+knitr::include_graphics("./new_gitattributes_file.png")
+```
+
+
+Added
+
+```{bash, eval=FALSE}
+large_file.rds filter=lfs diff=lfs merge=lfs -text
+```
+
+Add the .gitattributes file with
+
+```{bash, eval=FALSE}
+git add .gitattributes
+```
+
