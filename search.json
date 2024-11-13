@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "11130826",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "index.html#helpful-links",
+    "href": "index.html#helpful-links",
+    "title": "11130826",
+    "section": "Helpful Links",
+    "text": "Helpful Links\n\nPublishing Github Pages\ngit still shows files as modified after adding to .gitignore\n_freeze Note that freeze controls whether execution occurs during global project renders."
+  },
+  {
+    "objectID": "index.html#gh-pages-setup",
+    "href": "index.html#gh-pages-setup",
+    "title": "11130826",
+    "section": "gh-pages Setup",
+    "text": "gh-pages Setup\n\ngit checkout --orphan gh-pages\ngit reset --hard # make sure all changes are committed before running this!\ngit commit --allow-empty -m \"Initialising gh-pages branch\"\ngit push origin gh-pages"
+  },
+  {
+    "objectID": "index.html#large-files",
+    "href": "index.html#large-files",
+    "title": "11130826",
+    "section": "Large Files",
+    "text": "Large Files\n\ndm &lt;- matrix(rnorm(1.5e7), ncol = 1e3)\ndf &lt;- data.frame(dm)\nsaveRDS(df, \"./large_file.rds\")\n\n\nfile.info(\"./large_file.rds\")$size \n\n[1] 115183323\n\n\n\ndf &lt;- readRDS(\"./large_file.rds\")\ndf[1:5, 1:5]\n\n          X1         X2         X3         X4           X5\n1  1.2251973 -0.2497206  0.4046043  1.2828876  2.018006015\n2  0.7296651  1.1110408 -0.3505854  0.8403386  0.349675939\n3 -1.0320131 -0.7982849  0.1235606  0.6438175  0.008557255\n4  0.1048962 -0.5415316 -0.4823241  1.0485541 -1.099447735\n5  0.7387459  0.5164042  1.0729831 -0.1805227  0.402030541\n\n\n\nknitr::include_graphics(\"./error_large_file.png\")"
+  },
+  {
+    "objectID": "index.html#install-lfs",
+    "href": "index.html#install-lfs",
+    "title": "11130826",
+    "section": "Install LFS",
+    "text": "Install LFS\n\nknitr::include_graphics(\"./install_lfs.png\")\n\n\n\n\n\n\n\n\n\ngit lfs track \"large_file.rds\"\n\n\nknitr::include_graphics(\"./track_lfs_file.png\")\n\n\n\n\n\n\n\n\nShow new .gitattributes file\n\nknitr::include_graphics(\"./new_gitattributes_file.png\")\n\n\n\n\n\n\n\n\nAdded\n\nlarge_file.rds filter=lfs diff=lfs merge=lfs -text\n\nAdd the .gitattributes file with\n\ngit add .gitattributes"
+  },
+  {
+    "objectID": "index.html#caching",
+    "href": "index.html#caching",
+    "title": "11130826",
+    "section": "Caching",
+    "text": "Caching\nSo you’ll keep getting errors unless you remove the files from the cache. See SO question: Git error, need to remove large file\ngit rm --cached giant_file\ngit commit --amend -CHEAD\n\n#or\n\ngit filter-branch -f --tree-filter 'rm -f /path/to/file' HEAD --all"
+  }
+]
