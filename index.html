@@ -211,19 +211,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file.info</span>(<span class="st">"./large_file.rds"</span>)<span class="sc">$</span>size </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 115183323</code></pre>
+<pre><code>[1] 115183361</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"./large_file.rds"</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>          X1         X2         X3         X4           X5
-1  1.2251973 -0.2497206  0.4046043  1.2828876  2.018006015
-2  0.7296651  1.1110408 -0.3505854  0.8403386  0.349675939
-3 -1.0320131 -0.7982849  0.1235606  0.6438175  0.008557255
-4  0.1048962 -0.5415316 -0.4823241  1.0485541 -1.099447735
-5  0.7387459  0.5164042  1.0729831 -0.1805227  0.402030541</code></pre>
+<pre><code>          X1          X2         X3         X4         X5
+1  0.3006866 -0.08150836  0.8222746 -0.3819532 -1.6786906
+2 -0.4393029 -1.69508185 -0.8215622  0.4009155  0.3683968
+3 -0.5581733 -0.50018991  1.7344811 -0.3601478  1.4329303
+4 -0.5005250 -0.27217093 -0.6165987  0.6732467 -0.1304874
+5 -0.3908429 -0.16439817 -0.8144950 -1.4786616  0.6599968</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -285,13 +285,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="caching" class="level2">
 <h2 class="anchored" data-anchor-id="caching">Caching</h2>
 <p>So you’ll keep getting errors unless you remove the files from the cache. See SO question: <a href="https://stackoverflow.com/questions/33360043/git-error-need-to-remove-large-file">Git error, need to remove large file</a></p>
-<pre><code>git rm --cached giant_file
-git commit --amend -CHEAD
-
-#or
-
-git filter-branch -f --tree-filter 'rm -f /path/to/file' HEAD --all
-</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> rm <span class="at">--cached</span> giant_file</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--amend</span> <span class="at">-CHEAD</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#or</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> filter-branch <span class="at">-f</span> <span class="at">--tree-filter</span> <span class="st">'rm -f /path/to/file'</span> HEAD <span class="at">--all</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 </section>
