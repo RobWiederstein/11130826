@@ -25,14 +25,7 @@
     "href": "index.html#large-files",
     "title": "11130826",
     "section": "Large Files",
-    "text": "Large Files\nThe key challenge was to add a file that exceeded GitHub’s large file cap of 100 MB. A large file was created in R and saved as an .rds file. The file was then added to the repository. A large matrix was created and saved. The file size was 1.1518372^{8}.\n\ndm &lt;- matrix(rnorm(1.5e7), ncol = 1e3)\ndf &lt;- data.frame(dm)\nsaveRDS(df, \"./large_file.rds\")\n\n\ndf &lt;- readRDS(\"./large_file.rds\")\ndf[1:5, 1:5]\n\n           X1          X2         X3          X4         X5\n1  1.24422159  0.18619263  0.1488976 -1.95532714  0.2603075\n2  0.09994832  0.49036459  0.4025449  0.05760036  0.8449014\n3  0.75747896 -0.08910382  1.7491633  0.18381634 -0.2767644\n4 -0.66235624 -0.40351456  1.5103832 -0.64200337 -0.2012356\n5 -0.24244787 -0.77881084 -2.4243276  1.39992316 -1.7548573\n\n\n\nknitr::include_graphics(\"./error_large_file.png\")"
-  },
-  {
-    "objectID": "index.html#install-lfs",
-    "href": "index.html#install-lfs",
-    "title": "11130826",
-    "section": "Install LFS",
-    "text": "Install LFS\n\nknitr::include_graphics(\"./install_lfs.png\")\n\n\n\n\n\n\n\n\n\ngit lfs track \"large_file.rds\"\n\n\nknitr::include_graphics(\"./track_lfs_file.png\")\n\n\n\n\n\n\n\n\nShow new .gitattributes file\n\nknitr::include_graphics(\"./new_gitattributes_file.png\")\n\n\n\n\n\n\n\n\nAdded\n\nlarge_file.rds filter=lfs diff=lfs merge=lfs -text\n\nAdd the .gitattributes file with\n\ngit add .gitattributes"
+    "text": "Large Files\nThe key challenge was to add a file that exceeded GitHub’s large file cap of 100 MB. A large file was created in R and saved as an .rds file. The file was then added to the repository. A large matrix was created and saved. The file size was 1.1518371^{8}. The offending file is named large_file.rds.\n\nCreate Large File\n\ndm &lt;- matrix(rnorm(1.5e7), ncol = 1e3)\ndf &lt;- data.frame(dm)\nsaveRDS(df, \"./large_file.rds\")\n\n\n\n          X1          X2         X3         X4         X5\n1 -0.5945043  0.05552601  1.7629955 -1.1452599 -0.3700701\n2  1.9058854 -1.15704061 -0.2094798 -0.7316201  0.7165064\n3 -0.3326835  0.49451659 -1.2528523  0.1619851 -1.1411830\n4  1.4756140 -1.05738822 -0.4784038 -0.2770225 -0.2503507\n5 -0.3095474 -0.84214194  1.2038069 -0.5781924  1.5941913\n\n\n\nknitr::include_graphics(\"./error_large_file.png\")\n\n\n\n\n\n\n\n\n\n\nInstall LFS\nFor mac users, you can just do brew install git-lfs, then within the repository, you run git lfs install.\n\nknitr::include_graphics(\"./install_lfs.png\")\n\n\n\n\n\n\n\n\nNext add the file or directory to be tracked:\n\ngit lfs track \"large_file.rds\"\n\n\nknitr::include_graphics(\"./track_lfs_file.png\")\n\n\n\n\n\n\n\n\nA new file named .gitattributes is created and a text line is shows the file to be tracked.\n\nknitr::include_graphics(\"./new_gitattributes_file.png\")\n\n\n\n\n\n\n\n\nAdded\n\nlarge_file.rds filter=lfs diff=lfs merge=lfs -text\n\nAdd the .gitattributes file with\n\ngit add .gitattributes"
   },
   {
     "objectID": "index.html#caching",
