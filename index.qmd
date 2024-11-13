@@ -64,7 +64,7 @@ df[1:5, 1:5]
 
 
 ```{r}
-knitr::include_graphics("./error_large_file.png")
+knitr::include_graphics("./img/error_large_file.png")
 ```
 
 ### Install LFS
@@ -72,7 +72,7 @@ knitr::include_graphics("./error_large_file.png")
 For mac users, you can just do `brew install git-lfs`, then within the repository, you run `git lfs install`.  
 
 ```{r}
-knitr::include_graphics("./install_lfs.png")
+knitr::include_graphics("./img/install_lfs.png")
 ```
 
 Next add the file or directory to be tracked:
@@ -83,13 +83,13 @@ git lfs track "large_file.rds"
 
 
 ```{r}
-knitr::include_graphics("./track_lfs_file.png")
+knitr::include_graphics("./img/track_lfs_file.png")
 ```
 
 A new file named `.gitattributes` is created and a text line is shows the file to be tracked.
 
 ```{r}
-knitr::include_graphics("./new_gitattributes_file.png")
+knitr::include_graphics("./img/new_gitattributes_file.png")
 ```
 
 
