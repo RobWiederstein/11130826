@@ -93,7 +93,7 @@ knitr::include_graphics("./img/track_lfs_file.png")
 A new file named `.gitattributes` is created and a text line is shows the file to be tracked.
 
 ```{r, echo=FALSE}
-knitr::include_graphics("./img/new_gitattributes_file.png")
+knitr::include_graphics("./img/tree_gitattributes.png")
 ```
 
 
