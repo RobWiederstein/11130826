@@ -46,7 +46,9 @@ quarto publish gh-pages
 
 ## Large Files
 
-The key challenge was to add a file that exceeded GitHub's large file cap of 100 MB.  A large file was created in R and saved as an `.rds` file.  The file was then added to the repository.  A large matrix was created and saved.  The file size was `r file.info("./large_file.rds")$size `.
+The key challenge was to add a file that exceeded GitHub's large file cap of 100 MB.  A large file was created in R and saved as an `.rds` file.  The file was then added to the repository.  A large matrix was created and saved.  The file size was `r file.info("./large_file.rds")$size `. The offending file is named `large_file.rds`.
+
+### Create Large File
 
 ```{r}
 dm <- matrix(rnorm(1.5e7), ncol = 1e3)
@@ -55,9 +57,7 @@ saveRDS(df, "./large_file.rds")
 ```
 
 
-
-
-```{r}
+```{r, echo=FALSE}
 df <- readRDS("./large_file.rds")
 df[1:5, 1:5]
 ```
@@ -67,12 +67,15 @@ df[1:5, 1:5]
 knitr::include_graphics("./error_large_file.png")
 ```
 
+### Install LFS
 
-## Install LFS
+For mac users, you can just do `brew install git-lfs`, then within the repository, you run `git lfs install`.  
 
 ```{r}
 knitr::include_graphics("./install_lfs.png")
 ```
+
+Next add the file or directory to be tracked:
 
 ```{bash, eval=FALSE}
 git lfs track "large_file.rds"
@@ -83,7 +86,7 @@ git lfs track "large_file.rds"
 knitr::include_graphics("./track_lfs_file.png")
 ```
 
-Show new .gitattributes file
+A new file named `.gitattributes` is created and a text line is shows the file to be tracked.
 
 ```{r}
 knitr::include_graphics("./new_gitattributes_file.png")
