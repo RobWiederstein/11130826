@@ -158,6 +158,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#install-lfs" id="toc-install-lfs" class="nav-link" data-scroll-target="#install-lfs">Install LFS</a></li>
   <li><a href="#caching" id="toc-caching" class="nav-link" data-scroll-target="#caching">Caching</a></li>
   </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   <li><a href="#helpful-links" id="toc-helpful-links" class="nav-link" data-scroll-target="#helpful-links">Helpful Links</a></li>
   </ul>
 </nav>
@@ -220,7 +221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="large-files" class="level2">
 <h2 class="anchored" data-anchor-id="large-files">Large Files</h2>
-<p>The key challenge was to add a file that exceeded GitHub’s large file cap of 100 MB. A large file was created in R and saved as an <code>.rds</code> file. The file was then added to the repository. A large matrix was created and saved. The file size was 1.1518361^{8}. The offending file is named <code>large_file.rds</code>.</p>
+<p>GitHub warns when files are uploaded greater than 50MB; blocks files larger than 25MB uploaded via browser; and blocks files larger than 100 MB. Here, the challenge was to add a file that exceeded GitHub’s large file cap of 100 MB. A large file was created in R and saved as an <code>.rds</code> file. The file was then added to the repository. A large matrix was created and saved. The file size was 1.1518361^{8}. The offending file is named <code>large_file.rds</code>.</p>
 <section id="create-large-file" class="level3">
 <h3 class="anchored" data-anchor-id="create-large-file">Create Large File</h3>
 <div class="cell">
@@ -252,7 +253,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="install-lfs" class="level3">
 <h3 class="anchored" data-anchor-id="install-lfs">Install LFS</h3>
-<p>For mac users, you can just do <code>brew install git-lfs</code>, then within the repository, you run <code>git lfs install</code>.</p>
+<p>To track files above 100MB, you must use Git Large File Storage (Git LFS). For mac users, you can just do <code>brew install git-lfs</code>, then within the repository, you run <code>git lfs install</code>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -298,7 +299,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="caching">Caching</h3>
 <p>So you’ll keep getting errors unless you remove the files from the cache. See SO question: <a href="https://stackoverflow.com/questions/33360043/git-error-need-to-remove-large-file">Git error, need to remove large file</a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> rm <span class="at">--cached</span> giant_file</span>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> rm <span class="at">--cached</span> large_file.rds</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--amend</span> <span class="at">-CHEAD</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#or</span></span>
@@ -307,10 +308,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>The site was successfully deployed to GitHub pages. The large file was added to the repository and the site was published. The thing that was not obvious was the issue of caching.</p>
+</section>
 <section id="helpful-links" class="level2">
 <h2 class="anchored" data-anchor-id="helpful-links">Helpful Links</h2>
 <ul>
 <li><p><a href="https://quarto.org/docs/publishing/github-pages.html#publish-command">Publishing Github Pages</a></p></li>
+<li><p><a href="https://docs.github.com/en/repositories/working-with-files/managing-large-files">Managing large files on GitHub</a></p></li>
 <li><p><a href="https://stackoverflow.com/questions/9750606/git-still-shows-files-as-modified-after-adding-to-gitignore">git still shows files as modified after adding to .gitignore</a></p></li>
 <li><p><a href="https://quarto.org/docs/projects/code-execution.html#freeze">_freeze</a> Note that freeze controls whether execution occurs during global project renders.</p></li>
 </ul>
